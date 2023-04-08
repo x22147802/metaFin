@@ -1,32 +1,26 @@
 $(document).ready(function(){
+  $.ajax({
+    url:'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Clitecoin%2Cethereum&vs_currencies=EUR',
+    headers:{
+      'accept':'application/json'
+    },
+    type:"GET",
+    dataType:'json',
+  }).done(function(data){
+    if(data.bitcoin)
+    {
+      $('#bitCoinPrice').empty().append('1 Bitcoin = '+ data.bitcoin.eur+' Euros');
+    }
 
-  function displayExchangeVal(info,amountPassed,currency)
-  {
-    console.log(info);
-    var total= Math.imul(amountPassed,info);
-    $('#exchangeResult').empty().append(amountPassed+' ETH is '+total+' currency');
+    if(data.ethereum)
+    {
+      $('#ethPrice').empty().append('1 Ethereum = '+ data.ethereum.eur+' Euros');
+    }
 
-  }
-
-  $('#getExchange').on('click',function(e){
-    e.preventDefault();
-
-    const options = {method: 'GET', headers: {accept: 'text/plain'}};
-    const currency= $('#currencySelected').val();
-    const amount= $('#amountExchange').val();
-    const apiUrl= "https://api.coingate.com/api/v2/rates/merchant/ETH/"+currency;
-
-    fetch(apiUrl, options)
-    .then(response => response.json())
-    .then(response => displayExchangeVal(response,amount,currency))
-    .catch(err => console.error(err));
-
-
+    if(data.litecoin)
+    {
+      $('#liteCoinPrice').empty().append('1 Litecoin = '+ data.litecoin.eur+' Euros');
+    }
   });
-
-
-
-
- 
 
 });
