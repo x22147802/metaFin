@@ -4,7 +4,8 @@ pragma solidity >=0.8.7;
 
 contract Transactions {
 
-    //Address --> Contract -- deposit
+    //Address --> Contract -- 
+    
     function deposit() external payable {
     }
 

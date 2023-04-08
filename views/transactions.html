@@ -236,62 +236,62 @@
 
     const connectContract = async () => {
     const ABI =[
-	{
-		"inputs": [],
-		"name": "deposit",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address payable",
-				"name": "_to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_amount",
-				"type": "uint256"
-			}
-		],
-		"name": "withdraw",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getAddress",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getBalance",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	}
-];
-            const Address = "0x4160134C1E374bCfEe0E0171a8d2f5F6fe160d95"; // Taking Address from Remix 
-            window.web3 = await new Web3(window.ethereum);
-            window.contract = await new window.web3.eth.Contract(ABI, Address);
-            $('#connectSuccess').show();
+    	{
+    		"inputs": [],
+    		"name": "deposit",
+    		"outputs": [],
+    		"stateMutability": "payable",
+    		"type": "function"
+    	},
+    	{
+    		"inputs": [
+    			{
+    				"internalType": "address payable",
+    				"name": "_to",
+    				"type": "address"
+    			},
+    			{
+    				"internalType": "uint256",
+    				"name": "_amount",
+    				"type": "uint256"
+    			}
+    		],
+    		"name": "withdraw",
+    		"outputs": [],
+    		"stateMutability": "nonpayable",
+    		"type": "function"
+    	},
+    	{
+    		"inputs": [],
+    		"name": "getAddress",
+    		"outputs": [
+    			{
+    				"internalType": "address",
+    				"name": "",
+    				"type": "address"
+    			}
+    		],
+    		"stateMutability": "view",
+    		"type": "function"
+    	},
+    	{
+    		"inputs": [],
+    		"name": "getBalance",
+    		"outputs": [
+    			{
+    				"internalType": "uint256",
+    				"name": "",
+    				"type": "uint256"
+    			}
+    		],
+    		"stateMutability": "view",
+    		"type": "function"
+    	}
+    ];
+      const Address = "0x4160134C1E374bCfEe0E0171a8d2f5F6fe160d95"; // Taking Address from Remix 
+      window.web3 = await new Web3(window.ethereum);
+      window.contract = await new window.web3.eth.Contract(ABI, Address);
+      $('#connectSuccess').show();
     }
 
     const getContractAccount = async () => {

@@ -1,35 +1,32 @@
 $(document).ready(function(){
 
+  function displayExchangeVal(info,amountPassed,currency)
+  {
+    console.log(info);
+    var total= Math.imul(amountPassed,info);
+    $('#exchangeResult').empty().append(amountPassed+' ETH is '+total+' currency');
 
-    $('#getExchange').on('click',function(e){
-        e.preventDefault();
-        var from= $('#fromCurrency').val();
-        var to= $('#toCurrency').val();
-        var amount= $('#amountExchange').val();
+  }
 
-        var myHeaders = new Headers();
-        myHeaders.append("apikey", "Yy22yhevHR41o487QhEZOP9RmU7RshNI");
-        
-        var requestOptions = {
-          method: 'GET',
-          redirect: 'follow',
-          headers: myHeaders
-        };
+  $('#getExchange').on('click',function(e){
+    e.preventDefault();
 
-        var url= "https://api.apilayer.com/exchangerates_data/convert?to="+to+"&from="+from+"&amount="+amount+"";
+    const options = {method: 'GET', headers: {accept: 'text/plain'}};
+    const currency= $('#currencySelected').val();
+    const amount= $('#amountExchange').val();
+    const apiUrl= "https://api.coingate.com/api/v2/rates/merchant/ETH/"+currency;
 
-        fetchData(url,requestOptions,from,to,amount);
-
-    });
+    fetch(apiUrl, options)
+    .then(response => response.json())
+    .then(response => displayExchangeVal(response,amount,currency))
+    .catch(err => console.error(err));
 
 
-    async function fetchData(url,requestOptions,from,to,amount) {
-        const response = await fetch(url,requestOptions,from,to,amount);
-        const jsonData = await response.json();
-        $('#exchangeResult').empty().append(amount+ ' ' + from +' to '+ to +' is '+ jsonData.result);
-      }
+  });
 
-   
 
+
+
+ 
 
 });
